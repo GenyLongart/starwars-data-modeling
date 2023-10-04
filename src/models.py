@@ -7,6 +7,19 @@ from eralchemy2 import render_er
 
 Base = declarative_base()
 
+class Favorites_user_characters(Base):
+    __tablename__ = 'favorites_user_characters'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    character_id = Column(Integer, ForeignKey('characters.id'))
+
+class Favorites_user_planets(Base):
+    __tablename__ = 'favorites_user_planets'
+    id = Column(Integer, primary_key=True) 
+    user_id = Column(Integer, ForeignKey('users.id'))
+    planet_id = Column(Integer, ForeignKey('planets.id'))
+    
+
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
